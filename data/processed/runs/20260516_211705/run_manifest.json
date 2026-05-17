@@ -1,0 +1,7 @@
+{
+  "run_id": "20260516_211705",
+  "status": "rejected",
+  "failures": [
+    "sell-out data is missing required columns: ['Field Rep Username', 'Product Brand', 'Product Category', 'Product Name (SKU)', 'Sales ID', 'Total Value']"
+  ]
+}

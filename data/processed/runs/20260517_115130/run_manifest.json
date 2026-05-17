@@ -1,0 +1,492 @@
+{
+  "run_id": "20260517_115130",
+  "status": "approved",
+  "failures": [],
+  "source_files": [
+    {
+      "name": "ASM_KAM_Area_Mapping.xlsx",
+      "path": "data\\raw\\ASM_KAM_Area_Mapping.xlsx",
+      "size_bytes": 11712,
+      "sha256": "7184d10b6c9e225b9dd4e18471bd9faac0cc337347ac71afb00f41c6d5e264c1"
+    },
+    {
+      "name": "ASM_Rep_Mapping.csv",
+      "path": "data\\raw\\ASM_Rep_Mapping.csv",
+      "size_bytes": 156522,
+      "sha256": "fd12b01a624d380e0f6624f89ef28f98f7e26d1e4c9261c4d68ca881fd27801e"
+    },
+    {
+      "name": "cash_recon_2025_01.xlsx",
+      "path": "data\\raw\\cash_recon_2025_01.xlsx",
+      "size_bytes": 31550,
+      "sha256": "8329310859110d20f0e982ff2c59d5e7295728392b4a1fad3319a0c4f6248d0e"
+    },
+    {
+      "name": "cash_recon_2025_02.xlsx",
+      "path": "data\\raw\\cash_recon_2025_02.xlsx",
+      "size_bytes": 36430,
+      "sha256": "a3aeb85987cb7cf5aed7d7993d7ff00613984e313cd5cefb664c15eb1b51b3be"
+    },
+    {
+      "name": "cash_recon_2025_03.xlsx",
+      "path": "data\\raw\\cash_recon_2025_03.xlsx",
+      "size_bytes": 36720,
+      "sha256": "7c41ee9c59b8059e2446aea63577cca8aee9db6c92a767beb546d0b2dcf29930"
+    },
+    {
+      "name": "cash_recon_2025_04.xlsx",
+      "path": "data\\raw\\cash_recon_2025_04.xlsx",
+      "size_bytes": 37415,
+      "sha256": "a32771458027e13bf5532b8fe4a3da77fc473724bf882892f22922de2ed83f47"
+    },
+    {
+      "name": "cash_recon_2025_05.xlsx",
+      "path": "data\\raw\\cash_recon_2025_05.xlsx",
+      "size_bytes": 37277,
+      "sha256": "190c30f0de6a709b8f4caaa04e24dff2e8cbca3d073951279f23917e29401a01"
+    },
+    {
+      "name": "cash_recon_2025_06.xlsx",
+      "path": "data\\raw\\cash_recon_2025_06.xlsx",
+      "size_bytes": 37091,
+      "sha256": "1c32f243b90dc6e842cbab6d530abc9e10877c89ffb87687008a3bc85bfc131f"
+    },
+    {
+      "name": "cash_recon_2025_07.xlsx",
+      "path": "data\\raw\\cash_recon_2025_07.xlsx",
+      "size_bytes": 37858,
+      "sha256": "5293ae4a8e77e00508b6e95421f7d5706c43c3524246d34f667ac02dcba6ab5c"
+    },
+    {
+      "name": "cash_recon_2025_08.xlsx",
+      "path": "data\\raw\\cash_recon_2025_08.xlsx",
+      "size_bytes": 38377,
+      "sha256": "432be8e990eb95adf550d1af41f1679828bb690b40f20781b58de6d731fc269e"
+    },
+    {
+      "name": "cash_recon_2025_09.xlsx",
+      "path": "data\\raw\\cash_recon_2025_09.xlsx",
+      "size_bytes": 137019,
+      "sha256": "788e9f83aef788cc588c4c08a1dc3e93e091d80b7cb9b7c896660f57aee76e19"
+    },
+    {
+      "name": "cash_recon_2025_10.xlsx",
+      "path": "data\\raw\\cash_recon_2025_10.xlsx",
+      "size_bytes": 38296,
+      "sha256": "7f1aa555ba66b1bb0ffb11496638ddb9403f39a50cae4b95daf939779fe946a7"
+    },
+    {
+      "name": "cash_recon_2025_11.xlsx",
+      "path": "data\\raw\\cash_recon_2025_11.xlsx",
+      "size_bytes": 42684,
+      "sha256": "868f84767465fabe8dc5691690f37e321f7d09be5f314555bb2658a91616f2ed"
+    },
+    {
+      "name": "cash_recon_2025_12.xlsx",
+      "path": "data\\raw\\cash_recon_2025_12.xlsx",
+      "size_bytes": 49201,
+      "sha256": "b288f8668e332f6c9aadf3ea474e2454cb4b22604c3059d5a06d3536993fb7d6"
+    },
+    {
+      "name": "distance_2025_01.xlsx",
+      "path": "data\\raw\\distance_2025_01.xlsx",
+      "size_bytes": 830683,
+      "sha256": "c81f676329d6ee8f2c92ce86abb0fde466bd774f30526da7e0aef1a8a23d239e"
+    },
+    {
+      "name": "distance_2025_02.xlsx",
+      "path": "data\\raw\\distance_2025_02.xlsx",
+      "size_bytes": 831188,
+      "sha256": "3e4a707f7b750db7bd6ed7656db331e4d0bbc17156de4a98c0bcb490bf88e155"
+    },
+    {
+      "name": "distance_2025_03.xlsx",
+      "path": "data\\raw\\distance_2025_03.xlsx",
+      "size_bytes": 831620,
+      "sha256": "4fcf9a437b7f91718843063ec9b82f93da73362e79526d16ec5b922a5aa1ad19"
+    },
+    {
+      "name": "distance_2025_04.xlsx",
+      "path": "data\\raw\\distance_2025_04.xlsx",
+      "size_bytes": 831667,
+      "sha256": "ea19e70d94bb9db05a68080ca6f1e92d80164ba898811dc8d19883c283c3ed94"
+    },
+    {
+      "name": "distance_2025_05.xlsx",
+      "path": "data\\raw\\distance_2025_05.xlsx",
+      "size_bytes": 831906,
+      "sha256": "09408c041d7f01e45ab1dc5f2ec4de94fc1a74396d73e1a8252facf83c852ad6"
+    },
+    {
+      "name": "distance_2025_06.xlsx",
+      "path": "data\\raw\\distance_2025_06.xlsx",
+      "size_bytes": 830023,
+      "sha256": "f76f4d02a05cc2fa7448094747b88bd607a4820511aeb2a5b4d961a535abe958"
+    },
+    {
+      "name": "distance_2025_07.xlsx",
+      "path": "data\\raw\\distance_2025_07.xlsx",
+      "size_bytes": 832702,
+      "sha256": "ecb1afa2696cbb6101ef534c7bc0e7a0ecd17b0c82ee6eb9f4d74022b48bfb2d"
+    },
+    {
+      "name": "distance_2025_08.xlsx",
+      "path": "data\\raw\\distance_2025_08.xlsx",
+      "size_bytes": 832597,
+      "sha256": "ddc3bd5b44b01862e66790d062f07aa5c12646215685c053eba955ea79751857"
+    },
+    {
+      "name": "distance_2025_09.xlsx",
+      "path": "data\\raw\\distance_2025_09.xlsx",
+      "size_bytes": 832402,
+      "sha256": "403f66aede0610f0e67ceecc11a39135b160fe962a03bea666a39b6b27cb2a10"
+    },
+    {
+      "name": "distance_2025_10.xlsx",
+      "path": "data\\raw\\distance_2025_10.xlsx",
+      "size_bytes": 833634,
+      "sha256": "28eb719637ff696502ff8acc7642a1dfcdca552e3d513515d4678466524d4ccc"
+    },
+    {
+      "name": "distance_2025_11.xlsx",
+      "path": "data\\raw\\distance_2025_11.xlsx",
+      "size_bytes": 72001,
+      "sha256": "c0915c398108aa1cfddaa3cae218690730c8e4c3b5a5c9c3b49effa32f472fa3"
+    },
+    {
+      "name": "distance_2025_12.xlsx",
+      "path": "data\\raw\\distance_2025_12.xlsx",
+      "size_bytes": 84946,
+      "sha256": "d67da3978cca22f4c20fdb99f29de260a995f31ba84732456f3db82383464383"
+    },
+    {
+      "name": "Example_Category_Ranking.xlsx",
+      "path": "data\\raw\\Example_Category_Ranking.xlsx",
+      "size_bytes": 9004,
+      "sha256": "6f1c184d321ac0353fbce4e15f46809d81ff45426a1e4ac217c8296da3420a85"
+    },
+    {
+      "name": "KAM Map.xlsx",
+      "path": "data\\raw\\KAM Map.xlsx",
+      "size_bytes": 135449,
+      "sha256": "451f3a31c9c7130f11c14fe4ab7c8f81fea32bc4c4d4362840b08e0b239c2ba1"
+    },
+    {
+      "name": "org_structure_2025_01.xlsx",
+      "path": "data\\raw\\org_structure_2025_01.xlsx",
+      "size_bytes": 78525,
+      "sha256": "249817a9cb4904e3ebd166d9a91f7292c29fca9c2cf85ae0f308cd6bd5cf13d3"
+    },
+    {
+      "name": "org_structure_2025_02.xlsx",
+      "path": "data\\raw\\org_structure_2025_02.xlsx",
+      "size_bytes": 78412,
+      "sha256": "b7b570ff96f9df43e92e40ed529249058049a00fe793a10a7b7246bc2f6f881d"
+    },
+    {
+      "name": "org_structure_2025_03.xlsx",
+      "path": "data\\raw\\org_structure_2025_03.xlsx",
+      "size_bytes": 78395,
+      "sha256": "b8d31992272dce7dfe2c81b71d4a8111a8bcb3053abd91b1512839d7dcfe23d1"
+    },
+    {
+      "name": "org_structure_2025_04.xlsx",
+      "path": "data\\raw\\org_structure_2025_04.xlsx",
+      "size_bytes": 78403,
+      "sha256": "061ee8b63b03d90c08ffd2729ece8e658d968a99cdbb7e4c92084b47c77b525c"
+    },
+    {
+      "name": "org_structure_2025_05.xlsx",
+      "path": "data\\raw\\org_structure_2025_05.xlsx",
+      "size_bytes": 78874,
+      "sha256": "9fda8a154a4e50ee4d1801c4adf00ef9ae29d44564a4bbdfb9f9221eaed7bdd9"
+    },
+    {
+      "name": "org_structure_2025_06.xlsx",
+      "path": "data\\raw\\org_structure_2025_06.xlsx",
+      "size_bytes": 78874,
+      "sha256": "dd837f24b8aa20d0135113f4d6243dcf6978a2a52014f574ab2fb2c379673507"
+    },
+    {
+      "name": "org_structure_2025_07.xlsx",
+      "path": "data\\raw\\org_structure_2025_07.xlsx",
+      "size_bytes": 78856,
+      "sha256": "adca73c9605a15215352476fc2186a217fab4867eecdfaac2443f089aa4f905d"
+    },
+    {
+      "name": "org_structure_2025_08.xlsx",
+      "path": "data\\raw\\org_structure_2025_08.xlsx",
+      "size_bytes": 85116,
+      "sha256": "38de21448d63f45dbeaa2473e111e770d72e8072b2a2a39d44e499e66ed98d7e"
+    },
+    {
+      "name": "org_structure_2025_09.xlsx",
+      "path": "data\\raw\\org_structure_2025_09.xlsx",
+      "size_bytes": 103143,
+      "sha256": "1517d7353f53532fd03878bb32b5672995ebb0b9cfdb6e93acab132bf66e03cc"
+    },
+    {
+      "name": "org_structure_2025_10.xlsx",
+      "path": "data\\raw\\org_structure_2025_10.xlsx",
+      "size_bytes": 110703,
+      "sha256": "3ec4ea2f8873f3c063989b1e7263e91713b1a07f01784f2c44b0c68344c80d81"
+    },
+    {
+      "name": "org_structure_2025_11.xlsx",
+      "path": "data\\raw\\org_structure_2025_11.xlsx",
+      "size_bytes": 95034,
+      "sha256": "f0518e2cef0f774bc2eb39b18aa812cc11cdf6d1e57024430f59f351767115fa"
+    },
+    {
+      "name": "org_structure_2025_12.xlsx",
+      "path": "data\\raw\\org_structure_2025_12.xlsx",
+      "size_bytes": 95036,
+      "sha256": "308d0ba64f7338866861f2db21ef57234c2c3668b39a61cc072208b80d9755e0"
+    },
+    {
+      "name": "sales_2024_01.csv",
+      "path": "data\\raw\\sales_2024_01.csv",
+      "size_bytes": 134205972,
+      "sha256": "732095fad18037d6f98886e6f6f07a285497c43d1c45cb51920388aa9fc6b61b"
+    },
+    {
+      "name": "sales_2024_02.csv",
+      "path": "data\\raw\\sales_2024_02.csv",
+      "size_bytes": 144364269,
+      "sha256": "57ba122ba5ae753694aa655e3ac00b722388fa11a98e3d2cd2847aef5e56f259"
+    },
+    {
+      "name": "sales_2024_03.csv",
+      "path": "data\\raw\\sales_2024_03.csv",
+      "size_bytes": 136088222,
+      "sha256": "646d3875470d4506516ef03f0be4fa5eb4c13359cb7e6fbf9ae6176b7875fb25"
+    },
+    {
+      "name": "sales_2024_04.csv",
+      "path": "data\\raw\\sales_2024_04.csv",
+      "size_bytes": 104482766,
+      "sha256": "45dc89edaba108dbf705d32ca2bb3c3bf907e360a7f082fa3af4845fa119a95f"
+    },
+    {
+      "name": "sales_2024_05.csv",
+      "path": "data\\raw\\sales_2024_05.csv",
+      "size_bytes": 110697947,
+      "sha256": "18360e7d7a78c922d1f7d4ba95b566322638913e90f0767c5e9c446a9365329b"
+    },
+    {
+      "name": "sales_2024_06.csv",
+      "path": "data\\raw\\sales_2024_06.csv",
+      "size_bytes": 117471299,
+      "sha256": "42a23cc5ff7764bd4dda1c5cca6ab49ee783d50c9df4cd866c9012026d7ceb85"
+    },
+    {
+      "name": "sales_2024_07.csv",
+      "path": "data\\raw\\sales_2024_07.csv",
+      "size_bytes": 142785725,
+      "sha256": "ebcb2c36f325c26b6681ecd334cf19225a0bb44b437da3b51843f03156a16e80"
+    },
+    {
+      "name": "sales_2024_08.csv",
+      "path": "data\\raw\\sales_2024_08.csv",
+      "size_bytes": 139203774,
+      "sha256": "906daa75b455ad348432787e7a1d89f909f1c9bd271960d1987d2be9653ef81e"
+    },
+    {
+      "name": "sales_2024_09.csv",
+      "path": "data\\raw\\sales_2024_09.csv",
+      "size_bytes": 144269628,
+      "sha256": "2667198e0b376ff9b9b55c89c286e69f92415b9b35d791e2cff42f1874e2161a"
+    },
+    {
+      "name": "sales_2024_10.csv",
+      "path": "data\\raw\\sales_2024_10.csv",
+      "size_bytes": 145507711,
+      "sha256": "c6c1cadc95070ff02872a657a8f661aa5a455680aab93931c9ec3c66080b630e"
+    },
+    {
+      "name": "sales_2024_11.csv",
+      "path": "data\\raw\\sales_2024_11.csv",
+      "size_bytes": 144800987,
+      "sha256": "5bdead6d96a2a5fb5b04c4c5c4fe9bb39c5b2cb8c73ee7956c552c5961a62b02"
+    },
+    {
+      "name": "sales_2024_12.csv",
+      "path": "data\\raw\\sales_2024_12.csv",
+      "size_bytes": 143407219,
+      "sha256": "dd0ad9353e5e5457f4c3263457be4d3d123c43c147e4e325fa301d507af88753"
+    },
+    {
+      "name": "sales_2025_01.csv",
+      "path": "data\\raw\\sales_2025_01.csv",
+      "size_bytes": 135131670,
+      "sha256": "6e099b17f77b9e8be1e4e3c6e40d386551a3faf0868a7e9b3e01b8c622240949"
+    },
+    {
+      "name": "sales_2025_02.csv",
+      "path": "data\\raw\\sales_2025_02.csv",
+      "size_bytes": 155820511,
+      "sha256": "0158d6132fdc6e2c3d38093254238befb7b3c37ff217a4f330c01d5d75a60203"
+    },
+    {
+      "name": "sales_2025_03.csv",
+      "path": "data\\raw\\sales_2025_03.csv",
+      "size_bytes": 159508865,
+      "sha256": "077afbf74ae0c9d70792aa1cce701281bbf561b9b673265f46181a038d6fda91"
+    },
+    {
+      "name": "sales_2025_04.csv",
+      "path": "data\\raw\\sales_2025_04.csv",
+      "size_bytes": 178240215,
+      "sha256": "10f7099da3d40e1f19c21037dd7830d10fd208564c05089d21701db2635474b3"
+    },
+    {
+      "name": "sales_2025_05.csv",
+      "path": "data\\raw\\sales_2025_05.csv",
+      "size_bytes": 188009115,
+      "sha256": "3701d52f1a92b378b549fa819c0b2eda18ea293418e17f04d7a098721d761d03"
+    },
+    {
+      "name": "sales_2025_06.csv",
+      "path": "data\\raw\\sales_2025_06.csv",
+      "size_bytes": 184056177,
+      "sha256": "d069f45d6e637832bca28e048832bfbb8a632d0158fc499b34bc0afa893c4597"
+    },
+    {
+      "name": "sales_2025_07.csv",
+      "path": "data\\raw\\sales_2025_07.csv",
+      "size_bytes": 213654557,
+      "sha256": "04bf2585de8803c207b3701740157067e1efbeb5f8615ca0ce1a688b6600bc52"
+    },
+    {
+      "name": "sales_2025_08.csv",
+      "path": "data\\raw\\sales_2025_08.csv",
+      "size_bytes": 207492147,
+      "sha256": "ea102ea9fcf6707b14967623de6526bf5601c33cdc95d1c9eb4898dd63ec8e2c"
+    },
+    {
+      "name": "sales_2025_09.csv",
+      "path": "data\\raw\\sales_2025_09.csv",
+      "size_bytes": 215691516,
+      "sha256": "1d8be898e470d78d8793f9498bb687e62ccf351e3d654f5fbc91194a4fcc8367"
+    },
+    {
+      "name": "sales_2025_10.csv",
+      "path": "data\\raw\\sales_2025_10.csv",
+      "size_bytes": 190963090,
+      "sha256": "b1118d827317add997f2c765bc5e79cd475e31a825a7a2f5af91111df17faf35"
+    },
+    {
+      "name": "sales_2025_11.csv",
+      "path": "data\\raw\\sales_2025_11.csv",
+      "size_bytes": 196802548,
+      "sha256": "824c5a6fdca5e7c410fced875cf9fbb2be06b59d1a35b47613a794d918434c8e"
+    },
+    {
+      "name": "sales_2025_12.csv",
+      "path": "data\\raw\\sales_2025_12.csv",
+      "size_bytes": 201703673,
+      "sha256": "aa96104b03b12f34f60256e2696ca1f82e36d9541aa59ca0a098c21999f37b84"
+    },
+    {
+      "name": "sell_in_data.xlsx",
+      "path": "data\\raw\\sell_in_data.xlsx",
+      "size_bytes": 6863244,
+      "sha256": "0142a5c2b827a1c56286d83c326013e1b9f02117615aab1ab4a1bd6a8614c9bc"
+    },
+    {
+      "name": "sku_alias.xlsx",
+      "path": "data\\raw\\sku_alias.xlsx",
+      "size_bytes": 11659,
+      "sha256": "4fc75c736fdf0de831c84d20482a77a639f7e5519f07351f31b2e6a20f7af418"
+    },
+    {
+      "name": "Weights.xlsx",
+      "path": "data\\raw\\Weights.xlsx",
+      "size_bytes": 8740,
+      "sha256": "594d6996d854bcfeae60302c2c0442e588589eb036809fdf4784bf9967c69133"
+    }
+  ],
+  "weights": {
+    "sell_in_growth": 0.3,
+    "sell_out_growth": 0.3,
+    "distance": 0.2,
+    "cash_reconciliation": 0.2
+  },
+  "row_counts": {
+    "normalized_sell_out": 14863932,
+    "normalized_sell_in": 151011,
+    "sell_out_monthly": 82125,
+    "sell_in_monthly": 2572,
+    "area_awards": 180,
+    "region_awards": 53
+  },
+  "totals": {
+    "sell_out_value": 353833962898.4599,
+    "sell_in_value": 391075759882.0
+  },
+  "reconciliation_summary_path": "data\\processed\\runs\\20260517_115130\\reconciliation_summary.parquet",
+  "outputs": {
+    "area_kpi_awards": "data\\processed\\runs\\20260517_115130\\area_kpi_awards.parquet",
+    "region_kpi_awards": "data\\processed\\runs\\20260517_115130\\region_kpi_awards.parquet",
+    "normalized_sell_in": "data\\processed\\runs\\20260517_115130\\normalized_sell_in.parquet",
+    "normalized_sell_out": "data\\processed\\runs\\20260517_115130\\normalized_sell_out",
+    "exception_summary": "data\\processed\\runs\\20260517_115130\\exception_summary.parquet"
+  },
+  "exception_summary": [
+    {
+      "exception_name": "duplicate_kam_mapping_keys",
+      "row_count": 0,
+      "value_impact": 0.0
+    },
+    {
+      "exception_name": "duplicate_mapping_keys",
+      "row_count": 6,
+      "value_impact": 0.0
+    },
+    {
+      "exception_name": "duplicate_sell_out_partitions",
+      "row_count": 0,
+      "value_impact": 0.0
+    },
+    {
+      "exception_name": "invalid_dates",
+      "row_count": 0,
+      "value_impact": 0.0
+    },
+    {
+      "exception_name": "invalid_numeric_values",
+      "row_count": 0,
+      "value_impact": 0.0
+    },
+    {
+      "exception_name": "missing_sell_out_partitions",
+      "row_count": 0,
+      "value_impact": 0.0
+    },
+    {
+      "exception_name": "sell_in_invalid_dates",
+      "row_count": 0,
+      "value_impact": 0.0
+    },
+    {
+      "exception_name": "sell_in_invalid_numeric_values",
+      "row_count": 0,
+      "value_impact": 0.0
+    },
+    {
+      "exception_name": "unmapped_categories",
+      "row_count": 4820,
+      "value_impact": 33878897.5
+    },
+    {
+      "exception_name": "unmapped_kams",
+      "row_count": 0,
+      "value_impact": 0.0
+    },
+    {
+      "exception_name": "unmapped_reps",
+      "row_count": 145486,
+      "value_impact": 2860977380.0
+    }
+  ]
+}

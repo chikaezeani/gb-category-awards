@@ -1,0 +1,7 @@
+{
+  "run_id": "20260516_211818",
+  "status": "rejected",
+  "failures": [
+    "unable to hstack, column with name \"notes_right\" already exists"
+  ]
+}

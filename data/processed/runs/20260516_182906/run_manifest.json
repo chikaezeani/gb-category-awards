@@ -1,0 +1,7 @@
+{
+  "run_id": "20260516_182906",
+  "status": "rejected",
+  "failures": [
+    "sequence item 3: expected str instance, float found"
+  ]
+}

@@ -1,0 +1,29 @@
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Raw source data (too large / confidential)
+data/raw/
+data/raw_parquet/
+data/reference/
+
+# Heavy pipeline intermediates (not needed by app)
+data/processed/runs/*/normalized_sell_out/
+data/processed/runs/*/normalized_sell_in.parquet
+data/processed/runs/*/sell_out_monthly.parquet
+data/processed/runs/*/sell_in_monthly.parquet
+data/processed/runs/*/exceptions/
+
+# Plans / internal docs
+Plans/
+
+# OS files
+.DS_Store
+Thumbs.db

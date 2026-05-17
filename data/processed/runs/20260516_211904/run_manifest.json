@@ -1,0 +1,7 @@
+{
+  "run_id": "20260516_211904",
+  "status": "rejected",
+  "failures": [
+    "Expr.rank() got an unexpected keyword argument 'nulls_last'"
+  ]
+}

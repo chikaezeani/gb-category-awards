@@ -1,0 +1,7 @@
+{
+  "run_id": "20260516_211628",
+  "status": "rejected",
+  "failures": [
+    "type String is incompatible with expected type Null"
+  ]
+}

@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gb-category-awards"
+version = "0.1.0"
+description = "ETL pipeline and Streamlit dashboard for GB 2026 Category Awards."
+requires-python = ">=3.11"
+dependencies = [
+  "openpyxl>=3.1.5",
+  "pandas>=2.2.3",
+  "polars>=1.9.0",
+  "pyarrow>=17.0.0",
+  "streamlit>=1.45.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.3",
+]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
