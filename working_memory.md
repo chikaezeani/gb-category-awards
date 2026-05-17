@@ -192,7 +192,7 @@ If any of these source files are updated, the corresponding parquet **must be ma
 - Area awards: 216 → 252 (36 × 7); Region awards: 42 → 49 (7 × 7). Run `20260517_210312`: approved ✅
 
 ## Next Steps
-- [ ] Generate a new GitHub token when pushing future pipeline runs (old token was deleted)
+- [ ] Revoke the PAT shared in chat (ghp_5RcaW...) and generate a fresh one for next push
 
 ## Known Corrections
 - Area count is **36** (not 37) — PLATEAU-NASSARAWA is one merged area
