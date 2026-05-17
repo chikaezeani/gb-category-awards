@@ -11,6 +11,26 @@ TARGET_CATEGORIES = [
     "Spices",
 ]
 
+# Innovation SKU patterns for sell-OUT (matched against 'sku' column, lowercase)
+# PCT: Gino Peppered Chicken Tomato by 50g
+# ASUN Tomato: Asun Tomato 50g
+# Gino Pepper: Gino Hot Pepper 3.5g / 4g
+INNOVATIONS_SELL_OUT_PATTERNS = [
+    "peppered chicken tomato",
+    "asun tomato",
+    "gino hot pepper",
+]
+
+# Innovation SKU patterns for sell-IN (matched against 'Description' column, lowercase)
+# PCT: TSM GM PEPPERED CHICKEN 50 x 50G NG 24
+# ASUN Tomato: TSM ASUN FLV 50 x 50g (Sac) NG 25
+# Gino Pepper: GI PEPPER PWD 4gX10X20 NG 25 / PLUS 10 PROMO 25
+INNOVATIONS_SELL_IN_PATTERNS = [
+    "peppered chicken",
+    "tsm asun",
+    "gi pepper pwd",
+]
+
 WEIGHT_ALIASES = {
     "sell_in_growth": "Sell In Growth",
     "sell_out_growth": "Sell Out Growth",

@@ -7,8 +7,8 @@ _Read this file alongside `CLAUDE.md` at the start of every session._
 
 ## Project Status
 **Pipeline:** ✅ Approved — zero failures
-**Last run:** `20260517_164214`
-**Awards output:** 216 area awards (36 areas × 6 categories), 42 region awards (7 regions × 6 categories)
+**Last run:** `20260517_211226`
+**Awards output:** 252 area awards (36 areas × 7 categories), 49 region awards (7 regions × 7 categories)
 
 ---
 
@@ -176,10 +176,23 @@ If any of these source files are updated, the corresponding parquet **must be ma
 - Added "Total" to the category dropdown in `app.py`
 - Area awards: 180 → 216 (36 × 6); Region awards: 35 → 42 (7 × 6). Run `20260517_164214`: approved ✅
 
+### Session 11 — Cloud Deployment
+- Added password gate to `src/gb_awards/app.py` — password is `GBFoods2026`
+- Created `.gitignore` (excludes raw data, raw_parquet, heavy pipeline intermediates, .venv)
+- Created `requirements.txt` (streamlit, polars, pandas, openpyxl, pyarrow)
+- Initialized git repo, committed all files, pushed to GitHub: `github.com/chikaezeani/gb-category-awards` (public repo)
+- Deployed on Streamlit Community Cloud — live at: **https://gb-category-awards.streamlit.app**
+
+### Session 12 — Innovations Category
+- Added `INNOVATIONS_SELL_OUT_PATTERNS` and `INNOVATIONS_SELL_IN_PATTERNS` to `config.py` — the only missing piece; `ranking.py`, `pipeline.py`, and `app.py` already had the full Innovations implementation
+- **Innovations = Cubes + Peppered Chicken Tomato + Asun Tomato + Gino Hot Pepper**
+- Sell-out matched via `sku` column (lowercased): `"peppered chicken tomato"`, `"asun tomato"`, `"gino hot pepper"`
+- Sell-in matched via `Description` column (lowercased): `"peppered chicken"`, `"tsm asun"`, `"gi pepper pwd"` — plus full Cubes category
+- **Scoring:** same weighted rank-points formula as other categories but on 2025 absolute values (no YoY growth — new products have no 2024 baseline). Rank points from sell-in 2025 value rank + sell-out 2025 value rank, then `Weighted Score = (SI Rank Points × sell_in_weight) + (SO Rank Points × sell_out_weight × Hygiene)`
+- Area awards: 216 → 252 (36 × 7); Region awards: 42 → 49 (7 × 7). Run `20260517_210312`: approved ✅
+
 ## Next Steps
-- [ ] Verify the Streamlit app displays results correctly end-to-end
-- [ ] Confirm PLATEAU-NASSARAWA manager assignment is correct with business
-- [ ] Consider adding 2024 distance/cash recon files if they become available
+- [ ] Generate a new GitHub token when pushing future pipeline runs (old token was deleted)
 
 ## Known Corrections
 - Area count is **36** (not 37) — PLATEAU-NASSARAWA is one merged area

@@ -73,7 +73,7 @@ def main(root: str = ".") -> None:
         st.error("Selected run is not approved. Choose an approved ETL run.")
         return
 
-    category = st.sidebar.selectbox("Category", TARGET_CATEGORIES + ["Total"], index=0)
+    category = st.sidebar.selectbox("Category", TARGET_CATEGORIES + ["Total", "Innovations"], index=0)
     grain = st.sidebar.radio("Grain", options=["Area", "Region"], index=0)
     search = st.sidebar.text_input("Search")
 

@@ -4,7 +4,7 @@ from pathlib import Path
 
 import polars as pl
 
-from .config import TARGET_CATEGORIES
+from .config import INNOVATIONS_SELL_IN_PATTERNS, INNOVATIONS_SELL_OUT_PATTERNS, TARGET_CATEGORIES
 from .io import read_parquet
 from .utils import safe_growth, weighted_avg_expr
 
@@ -17,6 +17,55 @@ def load_weights(raw_parquet_dir: Path) -> dict[str, float]:
         for row in df.to_dicts()
         if row[key_col] is not None and row[val_col] is not None
     }
+
+
+def aggregate_innovations_sell_out(normalized_sell_out: pl.DataFrame) -> pl.DataFrame:
+    """Aggregate sell-out for the Innovations basket: full Cubes + PCT + ASUN Tomato + Gino Pepper.
+
+    Innovation sell-out SKUs (matched case-insensitively against 'sku' column):
+      - PCT:         contains "peppered chicken tomato"  → Gino Peppered Chicken Tomato by 50g
+      - ASUN Tomato: contains "asun tomato"              → Asun Tomato 50g
+      - Gino Pepper: contains "gino hot pepper"          → Gino Hot Pepper 3.5g / 4g
+    """
+    sku_lower = pl.col("sku").str.to_lowercase()
+    inno_filter = pl.col("target_category").eq("Cubes")
+    for kw in INNOVATIONS_SELL_OUT_PATTERNS:
+        inno_filter = inno_filter | sku_lower.str.contains(kw)
+    base = normalized_sell_out.filter(
+        inno_filter
+        & pl.col("area").ne("") & pl.col("area").is_not_null()
+        & pl.col("total_value_numeric").is_not_null()
+    )
+    return base.group_by(["year", "month", "area", "region"]).agg([
+        pl.col("total_value_numeric").sum().alias("sell_out_value"),
+        pl.col("distance_score").mean().alias("distance_score"),
+        pl.col("cash_recon_score").mean().alias("cash_recon_score"),
+    ]).with_columns(pl.lit("Innovations").alias("target_category"))
+
+
+def aggregate_innovations_sell_in(normalized_sell_in: pl.DataFrame) -> pl.DataFrame:
+    """Aggregate sell-in for the Innovations basket: full Cubes + PCT + ASUN Tomato + Gino Pepper.
+
+    Innovation sell-in descriptions (matched case-insensitively against 'Description' column):
+      - PCT:         contains "peppered chicken"  → TSM GM PEPPERED CHICKEN 50 x 50G NG 24
+      - ASUN Tomato: contains "tsm asun"          → TSM ASUN FLV 50 x 50g (Sac) NG 25
+      - Gino Pepper: contains "gi pepper pwd"     → GI PEPPER PWD 4gX10X20 NG 25 / PLUS 10 PROMO 25
+    """
+    if "Description" in normalized_sell_in.columns:
+        desc_lower = pl.col("Description").str.to_lowercase()
+    else:
+        desc_lower = pl.lit("")
+    inno_filter = pl.col("target_category").eq("Cubes")
+    for kw in INNOVATIONS_SELL_IN_PATTERNS:
+        inno_filter = inno_filter | desc_lower.str.contains(kw)
+    base = normalized_sell_in.filter(
+        inno_filter
+        & pl.col("area").ne("") & pl.col("area").is_not_null()
+        & pl.col("Value").is_not_null()
+    )
+    return base.group_by(["year", "month", "area", "region"]).agg(
+        pl.col("Value").sum().alias("sell_in_value")
+    ).with_columns(pl.lit("Innovations").alias("target_category"))
 
 
 def aggregate_sell_out(normalized_sell_out: pl.DataFrame) -> pl.DataFrame:
@@ -88,6 +137,8 @@ def _quality_compare(df: pl.DataFrame, grain: str) -> pl.DataFrame:
 def compute_awards(
     sell_out_monthly: pl.DataFrame,
     sell_in_monthly: pl.DataFrame,
+    innovations_sell_out: pl.DataFrame,
+    innovations_sell_in: pl.DataFrame,
     weights: dict[str, float],
     grain: str,
 ) -> pl.DataFrame:
@@ -189,6 +240,61 @@ def compute_awards(
     awards = awards.with_row_index("_idx").with_columns(
         (pl.col("_idx") - pl.col("_idx").min().over("Category") + 1).cast(pl.Int32).alias("Rank")
     ).drop("_idx")
+
+    # === Innovations: same weighted rank-points formula but on 2025 absolute values (no YoY growth) ===
+    if not innovations_sell_out.is_empty() or not innovations_sell_in.is_empty():
+        inno_si = _year_compare(innovations_sell_in, "sell_in_value", grain)
+        inno_so = _year_compare(innovations_sell_out, "sell_out_value", grain)
+        inno_q = _quality_compare(innovations_sell_out, grain)
+        inno = (
+            inno_si
+            .join(inno_so, on=[grain, "target_category"], how="full", coalesce=True)
+            .join(inno_q, on=[grain, "target_category"], how="left")
+            .with_columns([
+                pl.col("sell_in_value_2024").fill_null(0.0),
+                pl.col("sell_in_value_2025").fill_null(0.0),
+                pl.col("sell_out_value_2024").fill_null(0.0),
+                pl.col("sell_out_value_2025").fill_null(0.0),
+                (pl.col("distance_score").fill_null(0.0) * pl.col("cash_recon_score").fill_null(0.0)).alias("Hygiene"),
+            ])
+        )
+        # Rank points based on 2025 absolute values (highest value = most points)
+        n = len(inno)
+        inno = inno.with_columns([
+            pl.col("sell_in_value_2025").rank(method="min", descending=True).alias("_si_rank"),
+            pl.col("sell_out_value_2025").rank(method="min", descending=True).alias("_so_rank"),
+        ]).with_columns([
+            (pl.lit(n) + 1 - pl.col("_si_rank")).cast(pl.Int64).alias("Sell In Growth Rank Points"),
+            (pl.lit(n) + 1 - pl.col("_so_rank")).cast(pl.Int64).alias("Sell Out Growth Rank Points"),
+        ]).drop(["_si_rank", "_so_rank"])
+        inno = inno.with_columns([
+            pl.lit(None).cast(pl.Float64).alias("Sell In Growth vs YA"),
+            pl.lit(None).cast(pl.Float64).alias("Sell Out Growth vs YA"),
+            pl.col("distance_score").alias("Distance Score"),
+            pl.col("cash_recon_score").alias("Cash Reconciliation Score"),
+            (
+                pl.col("Sell In Growth Rank Points") * weights["sell_in_growth"]
+                + pl.col("Sell Out Growth Rank Points") * weights["sell_out_growth"]
+                * pl.col("Hygiene").fill_null(0.0)
+            ).alias("Weighted Score"),
+        ])
+        inno = inno.rename({
+            "target_category": "Category",
+            grain: grain_title,
+            "sell_in_value_2024": "Sell In 2024",
+            "sell_in_value_2025": "Sell In 2025",
+            "sell_out_value_2024": "Sell Out 2024",
+            "sell_out_value_2025": "Sell Out 2025",
+        })
+        inno = inno.sort(
+            by=["Category", "Weighted Score", "Hygiene", "Sell In 2025", "Sell Out 2025", grain_title],
+            descending=[False, True, True, True, True, False],
+            nulls_last=True,
+        )
+        inno = inno.with_row_index("_idx").with_columns(
+            (pl.col("_idx") - pl.col("_idx").min() + 1).cast(pl.Int32).alias("Rank")
+        ).drop("_idx")
+        awards = pl.concat([awards, inno], how="diagonal_relaxed")
 
     # Attach Region to area-grain table
     if grain == "area" and not sell_out_monthly.is_empty():

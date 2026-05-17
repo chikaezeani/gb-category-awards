@@ -8,7 +8,7 @@ from .config import AppPaths, THRESHOLDS
 from .ingest import run_ingestion
 from .io import discover_files, inventory_files
 from .normalize import DataValidationError, ExceptionBundle, normalize_sell_in, normalize_sell_out
-from .ranking import aggregate_sell_in, aggregate_sell_out, compute_awards, load_weights
+from .ranking import aggregate_innovations_sell_in, aggregate_innovations_sell_out, aggregate_sell_in, aggregate_sell_out, compute_awards, load_weights
 from .utils import compact_records, ensure_dir, latest_approved_run, now_run_id, write_json
 
 
@@ -141,14 +141,16 @@ def run_pipeline(root: Path | str) -> Path:
 
         sell_out_monthly = aggregate_sell_out(normalized_sell_out)
         sell_in_monthly = aggregate_sell_in(normalized_sell_in)
+        innovations_sell_out = aggregate_innovations_sell_out(normalized_sell_out)
+        innovations_sell_in = aggregate_innovations_sell_in(normalized_sell_in)
 
         _write_normalized_sell_out(normalized_sell_out, run_dir)
         normalized_sell_in.write_parquet(run_dir / "normalized_sell_in.parquet")
         sell_out_monthly.write_parquet(run_dir / "sell_out_monthly.parquet")
         sell_in_monthly.write_parquet(run_dir / "sell_in_monthly.parquet")
 
-        area_awards = compute_awards(sell_out_monthly, sell_in_monthly, weights, "area")
-        region_awards = compute_awards(sell_out_monthly, sell_in_monthly, weights, "region")
+        area_awards = compute_awards(sell_out_monthly, sell_in_monthly, innovations_sell_out, innovations_sell_in, weights, "area")
+        region_awards = compute_awards(sell_out_monthly, sell_in_monthly, innovations_sell_out, innovations_sell_in, weights, "region")
         area_awards.write_parquet(run_dir / "area_kpi_awards.parquet")
         region_awards.write_parquet(run_dir / "region_kpi_awards.parquet")
 
