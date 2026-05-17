@@ -84,7 +84,21 @@ def main(root: str = ".") -> None:
         filtered = filtered[filtered[anchor].astype(str).str.contains(search, case=False, na=False)]
 
     st.subheader(f"{category} Ranking by {grain}")
-    st.dataframe(filtered, use_container_width=True, hide_index=True)
+    display = filtered.copy()
+    if category == "Innovations":
+        for col in ["Sell In 2024", "Sell Out 2024"]:
+            if col in display.columns:
+                display[col] = ""
+    for col in ["Sell In 2024", "Sell In 2025", "Sell Out 2024", "Sell Out 2025"]:
+        if col in display.columns:
+            display[col] = display[col].apply(lambda x: f"{x:,.0f}" if pd.notna(x) and x != "" else "")
+    for col in ["Sell In Growth vs YA", "Sell Out Growth vs YA"]:
+        if col in display.columns:
+            display[col] = display[col].apply(lambda x: f"{x * 100:.1f}%" if pd.notna(x) else "")
+    for col in ["Weighted Score"]:
+        if col in display.columns:
+            display[col] = display[col].apply(lambda x: f"{x:,.2f}" if pd.notna(x) else "")
+    st.dataframe(display, use_container_width=True, hide_index=True)
     st.download_button("Export CSV", filtered.to_csv(index=False).encode("utf-8"), file_name=f"{category}_{grain.lower()}_awards.csv")
     st.download_button(
         "Export Excel",
